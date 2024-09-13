@@ -25,7 +25,7 @@ namespace Eclipse.Core.Services.Token
             var token = new JwtSecurityToken(
                 claims: claims,
                 signingCredentials: signingCredentials,
-                expires: DateTime.UtcNow.AddHours(12)
+                expires: DateTime.UtcNow.AddHours(_options.ExpiresHours)
                 );
 
             return new JwtSecurityTokenHandler().WriteToken(token);
