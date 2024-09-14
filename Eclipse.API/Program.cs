@@ -37,7 +37,7 @@ var configuration = builder.Configuration;
 
 builder.Services.Configure<JWTOptions>(builder.Configuration.GetSection("JwtOptions"));
 
-var jwtOptions = builder.Configuration.GetSection("JwtOptions").Get<JWTOptions>();
+var JWTOptions = builder.Configuration.GetSection("JwtOptions").Get<JWTOptions>();
 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(JwtBearerDefaults.AuthenticationScheme, options =>
@@ -48,7 +48,7 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             ValidateAudience = false,
             ValidateLifetime = true,
             ValidateIssuerSigningKey = true,
-            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtOptions.SecretKey))
+            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(JWTOptions.SecretKey))
         };
         options.Events = new JwtBearerEvents
         {
@@ -60,8 +60,6 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
         };
     });
 builder.Services.AddAuthorization();
-Console.WriteLine($"Secret Key: {jwtOptions.SecretKey}");
-Console.WriteLine($"Expires Hours: {jwtOptions.ExpiresHours}");
 
 var app = builder.Build();
 
