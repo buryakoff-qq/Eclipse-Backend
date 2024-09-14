@@ -9,6 +9,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Eclipse.Core", "Eclipse.Cor
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Eclipse.Infrastructure", "Eclipse.Infrastructure\Eclipse.Infrastructure.csproj", "{846C214F-891B-4E57-8CF2-9B85CB5CC1D7}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{63DAA5A8-AA08-476E-902D-455707A6EAC8}"
+	ProjectSection(SolutionItems) = preProject
+		var.env = var.env
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

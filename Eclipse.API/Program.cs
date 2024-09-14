@@ -11,7 +11,6 @@ using Eclipse.Infrastructure;
 using Eclipse.Infrastructure.Repositories;
 using FluentValidation;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.Extensions.Configuration; // Add this namespace
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 
@@ -61,6 +60,8 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
         };
     });
 builder.Services.AddAuthorization();
+Console.WriteLine($"Secret Key: {jwtOptions.SecretKey}");
+Console.WriteLine($"Expires Hours: {jwtOptions.ExpiresHours}");
 
 var app = builder.Build();
 
@@ -78,11 +79,8 @@ app.UseCookiePolicy(new CookiePolicyOptions()
 });
 app.UseHttpsRedirection();
 
-app.UseAuthorization();
-
-
-app.UseAuthorization();
 app.UseAuthentication();
+app.UseAuthorization();
 
 app.MapControllers();
 
