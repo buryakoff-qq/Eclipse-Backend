@@ -35,9 +35,9 @@ builder.Services.AddDbContext<EclipseDbContext>();
 
 var configuration = builder.Configuration;
 
-builder.Services.Configure<JWTOptions>(builder.Configuration.GetSection("JwtOptions"));
+//builder.Services.Configure<JWTOptions>(builder.Configuration.GetSection("JwtOptions"));
 
-var JWTOptions = builder.Configuration.GetSection("JwtOptions").Get<JWTOptions>();
+//var JWTOptions = builder.Configuration.GetSection("JwtOptions").Get<JWTOptions>();
 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(JwtBearerDefaults.AuthenticationScheme, options =>
@@ -48,7 +48,7 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             ValidateAudience = false,
             ValidateLifetime = true,
             ValidateIssuerSigningKey = true,
-            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(JWTOptions.SecretKey))
+            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("DefinitelyNotTheSecretKeyOneHundredPercentTrue"))
         };
         options.Events = new JwtBearerEvents
         {
