@@ -363,3 +363,4 @@ MigrationBackup/
 FodyWeavers.xsd
 /Eclipse.API/appsettings.json
 /Eclipse.API/appsettings.json
+/var.env
